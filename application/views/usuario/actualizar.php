@@ -73,16 +73,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Footer-->
-                <footer class="bg-dark py-4 mt-auto">
-                    <div class="container px-5 text-center text-white small">
-                        &copy; GymFitness 2023 - Todos los derechos reservados
-                    </div>
-                </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
     </body>
 </html>
 

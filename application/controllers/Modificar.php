@@ -19,6 +19,7 @@ class Modificar extends CI_Controller {
         }
         $this->load->view('fijos/head_login');
         $this->load->view('usuario/actualizar', $usuario);
+        $this->load->view('fijos/footer');
     }
 
 

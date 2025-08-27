@@ -37,6 +37,7 @@ public function autenticarUsuario() {
             $data['error'] = "Usuario o contraseña incorrecta";
             $data['id_rol'] = $id_rol;
             $this->load->view('inicio', $data);
+            $this->load->view('fijos/footer');
         }
     }
 }

@@ -19,7 +19,6 @@
                 <a class="navbar-brand" href="<?php echo base_url('welcome')?>">GymFitness</a>
             </div>
         </nav>
-
         <!-- Page content-->
         <section class="py-5">
             <div class="container px-5">
