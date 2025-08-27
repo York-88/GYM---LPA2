@@ -29,6 +29,7 @@ class Welcome extends CI_Controller {
 		$roles['roles'] = $this->ObtenerRolesModel->obtenerRoles();
 		$this->load->view('fijos/head',$roles);
 		$this->load->view('login',$roles);
+		$this->load->view('fijos/footer');
 		
 	}
 	public function inicio(){
@@ -36,6 +37,7 @@ class Welcome extends CI_Controller {
 		$usuario['usuario'] = $this->ObtenerUsuarioModel->obtenerUsuario();
 		$id_rol['id_rol'] = $this->uri->segment(3); 
 		$this->load->view('inicio', $id_rol, $usuario);
+		$this->load->view('fijos/footer');
 
 	}
 
@@ -45,6 +47,7 @@ class Welcome extends CI_Controller {
 
 		$this->load->view('fijos/head',$roles);
 		$this->load->view('planes',$roles);
+		$this->load->view('fijos/footer');
 		
 	}
 
@@ -56,6 +59,7 @@ class Welcome extends CI_Controller {
 		$usuarios['entrenadores'] = $this->ObtenerUsuarioModel->obtenerEntrenadores();
 		$this->load->view('fijos/head_login',$usuarios);
 		$this->load->view('dashboard',$usuarios);
+		$this->load->view('fijos/footer');
 	}
 
 	public function actualizar() {
@@ -63,6 +67,7 @@ class Welcome extends CI_Controller {
 		$usuario['usuario'] = $this->ObtenerUsuarioModel->obtenerUsuario();
 		$this->load->view('fijos/head_login',$usuario);
 		$this->load->view('usuario/actualizar',$usuario);
+		$this->load->view('fijos/footer');
 
 	}
 

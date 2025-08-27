@@ -9,7 +9,76 @@
 <body>
 
     <?php if($this->session->userdata('id_rol') == 3): ?>
-        <h1>HOLA, FELICIDADES!!!</h1>
+        <div class="container mt-4">
+            <h2 class="mb-4">Bienvenido al Dashboard del Cliente</h2>
+            <!-- Sección: Rutinas asignadas -->
+            <div class="card mb-4">
+                <div class="card-header">Rutinas Asignadas</div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Nombre Rutina</th>
+                                <th>Descripción</th>
+                                <th>Duración</th>
+                                <th>Entrenador</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if(isset($rutinas) && !empty($rutinas)): ?>
+                                <?php foreach($rutinas as $rutina): ?>
+                                    <tr>
+                                        <td><?php echo $rutina->nombre; ?></td>
+                                        <td><?php echo $rutina->descripcion; ?></td>
+                                        <td><?php echo $rutina->duracion; ?></td>
+                                        <td><?php echo $rutina->entrenador; ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <tr><td colspan="4">No tienes rutinas asignadas.</td></tr>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Sección: Escoger cita -->
+            <div class="card mb-4">
+                <div class="card-header">Escoger Cita</div>
+                <div class="card-body">
+                    <form method="post" action="<?php echo base_url('Cliente/escogerCita'); ?>">
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label for="rutina" class="form-label">Rutina</label>
+                                <select class="form-select" id="rutina" name="rutina">
+                                    <option value="">Selecciona una rutina</option>
+                                    <?php if(isset($rutinas) && !empty($rutinas)): ?>
+                                        <?php foreach($rutinas as $rutina): ?>
+                                            <option value="<?php echo $rutina->id; ?>"><?php echo $rutina->nombre; ?></option>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="entrenador" class="form-label">Entrenador</label>
+                                <select class="form-select" id="entrenador" name="entrenador">
+                                    <option value="">Selecciona un entrenador</option>
+                                    <?php if(isset($entrenadores) && !empty($entrenadores)): ?>
+                                        <?php foreach($entrenadores as $entrenador): ?>
+                                            <option value="<?php echo $entrenador->id_usuario; ?>"><?php echo $entrenador->nombre; ?></option>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="fecha" class="form-label">Fecha</label>
+                                <input type="date" class="form-control" id="fecha" name="fecha">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Agendar Cita</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     <?php elseif($this->session->userdata('id_rol') == 2): ?>
         <h1>HOLA, FELICIDADES!!!</h1>
     <?php elseif($this->session->userdata('id_rol') == 4): ?>
