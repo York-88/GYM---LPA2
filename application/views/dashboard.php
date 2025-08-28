@@ -79,7 +79,7 @@
                 </div>
             </div>
         </div>
-    <?php elseif($this->session->userdata('id_rol') == 3): ?>
+    <?php elseif($this->session->userdata('id_rol') == 2): ?>
         <h1>HOLA, FELICIDADES!!!</h1>
     <?php elseif($this->session->userdata('id_rol') == 4): ?>
 

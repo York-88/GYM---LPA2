@@ -18,4 +18,13 @@ class Modificar_modelo extends CI_Model {
         
     }
 
+    public function editarEjercicio($id_ejercicio, $datos) {
+        $this->db->where('id_ejercicio', $id_ejercicio);
+        return $this->db->update('ejercicios', $datos);
+    }
+    public function eliminarEjercicio($id_ejercicio) {
+        $this->db->where('id_ejercicio', $id_ejercicio);
+        $this->db->update('ejercicios', ['estado' => 0]);
+    }
+
 }  
