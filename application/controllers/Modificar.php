@@ -8,6 +8,7 @@ class Modificar extends CI_Controller {
 
         $this->load->model('modificar/Modificar_modelo');
         $this->load->model('obtener/ObtenerUsuarioModel');
+        $this->load->model('obtener/Obtener_ejercicios');
     }
 
 
@@ -44,12 +45,38 @@ class Modificar extends CI_Controller {
         redirect('Welcome/dashboard');
     }
 
-    
     public function eliminarUsuario() {
         $id_usuario = $this->uri->segment(3);
         $this->Modificar_modelo->eliminarUsuario($id_usuario);
         $this->session->set_flashdata('mensaje', 'Usuario eliminado correctamente.');
         redirect('welcome/dashboard');
+    }
+
+    public function editarEjercicio($id_ejercicio) {
+        $ejercicio['ejercicio'] = $this->Obtener_ejercicios->obtenerEjercicioPorId($id_ejercicio);
+        if ($this->input->post()) {
+            $datos = [
+                'nombre_ejercicio' => $this->input->post('nombre'),
+                'objetivo'         => $this->input->post('descripcion')
+            ];
+            $this->Modificar_modelo->editarEjercicio($id_ejercicio, $datos);
+            $this->session->set_flashdata('mensaje', 'Ejercicio editado correctamente.');
+            redirect('Obtener/obtenerEjercicios');
+        }
+
+        $ejercicio['id_ejercicio'] = $id_ejercicio;
+        if (!$ejercicio) {
+            show_error("El ejercicio no existe");
+        }
+        $this->load->view('fijos/head_login');
+        $this->load->view('rutinas/actualizar_ejercicio', $ejercicio);
+        $this->load->view('fijos/footer');
+    }
+    public function eliminarEjercicio() {
+        $id_ejercicio = $this->uri->segment(3);
+        $this->Modificar_modelo->eliminarEjercicio($id_ejercicio);
+        $this->session->set_flashdata('mensaje', 'Ejercicio eliminado correctamente.');
+        redirect('Obtener/obtenerEjercicios');
     }
 
 }

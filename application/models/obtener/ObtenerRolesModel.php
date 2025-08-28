@@ -15,5 +15,4 @@ class ObtenerRolesModel extends CI_Model {
 
 }
 
-
 ?>

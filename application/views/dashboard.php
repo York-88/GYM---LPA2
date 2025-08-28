@@ -80,7 +80,35 @@
             </div>
         </div>
     <?php elseif($this->session->userdata('id_rol') == 2): ?>
-        <h1>HOLA, FELICIDADES!!!</h1>
+        <div class="card mb-4">
+                <div class="card-header">Rutinas Asignadas</div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Nombre Rutina</th>
+                                <th>Descripción</th>
+                                <th>Duración</th>
+                                <th>Entrenador</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if(isset($rutinas) && !empty($rutinas)): ?>
+                                <?php foreach($rutinas as $rutina): ?>
+                                    <tr>
+                                        <td><?php echo $rutina->nombre; ?></td>
+                                        <td><?php echo $rutina->descripcion; ?></td>
+                                        <td><?php echo $rutina->duracion; ?></td>
+                                        <td><?php echo $rutina->entrenador; ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <tr><td colspan="4">No tienes rutinas asignadas.</td></tr>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
     <?php elseif($this->session->userdata('id_rol') == 4): ?>
 
         <div class="container">
