@@ -90,7 +90,7 @@ class Registrar extends CI_Controller {
 
 
 
-
+    }
 	public function listar() {
 
 		$this->load->view('fijos/head');
