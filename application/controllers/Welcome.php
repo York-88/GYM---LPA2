@@ -20,6 +20,7 @@ class Welcome extends CI_Controller {
 	 */
 	 public function __construct() {
         parent::__construct();
+		$this->load->model('obtener/Obtener_rutinas');
         $this->load->model('obtener/ObtenerRolesModel');
 		$this->load->model('obtener/ObtenerUsuarioModel');
 		$this->load->helper('form');
@@ -53,13 +54,21 @@ class Welcome extends CI_Controller {
 
 	public function dashboard() {
 		
-		$usuarios['roles'] = $this->ObtenerRolesModel->obtenerRoles();
-		$usuarios['empleados'] = $this->ObtenerUsuarioModel->obtenerEmpleados();
-		$usuarios['clientes'] = $this->ObtenerUsuarioModel->obtenerClientes();
-		$usuarios['entrenadores'] = $this->ObtenerUsuarioModel->obtenerEntrenadores();
-		$this->load->view('fijos/head_login',$usuarios);
-		$this->load->view('dashboard',$usuarios);
-		$this->load->view('fijos/footer');
+	$data = array();
+	$data['roles'] = $this->ObtenerRolesModel->obtenerRoles();
+	$data['empleados'] = $this->ObtenerUsuarioModel->obtenerEmpleados();
+	$data['clientes'] = $this->ObtenerUsuarioModel->obtenerClientes();
+	$data['entrenadores'] = $this->ObtenerUsuarioModel->obtenerEntrenadores();
+	// Rutinas asignadas y todas las rutinas para compatibilidad con dashboard cliente
+	$data['rutinas_asignadas'] = $this->Obtener_rutinas->obtenerRutinas();
+	$data['todas_rutinas'] = $this->Obtener_rutinas->obtenerTodasRutinas();
+	// Citas agendadas del usuario
+	$id_usuario = $this->session->userdata('id_usuario');
+	$this->load->model('Cliente_citas_model');
+	$data['citas_agendadas'] = $this->Cliente_citas_model->obtenerCitasPorUsuario($id_usuario);
+	$this->load->view('fijos/head_login',$data);
+	$this->load->view('dashboard',$data);
+	$this->load->view('fijos/footer');
 	}
 
 	public function actualizar() {

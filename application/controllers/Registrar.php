@@ -141,6 +141,7 @@ class Registrar extends CI_Controller {
 
 			redirect('Obtener/obtenerEjercicios');
 
+
 		} else {
 			$this->load->view('fijos/head_login');
 			$this->load->view('rutinas/registrar_ejercicio');

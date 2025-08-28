@@ -13,51 +13,29 @@
             <h2 class="mb-4">Bienvenido al Dashboard del Cliente</h2>
             <!-- Sección: Rutinas asignadas -->
             <div class="card mb-4">
-                <div class="card-header">Rutinas Asignadas</div>
+                <div class="card-header">Citas Programadas</div>
                 <div class="card-body">
                     <table class="table table-bordered mt-4">
                         <thead>
                             <tr>
-                                <th>Rutina</th>
-                                <th>Nivel</th>
+                              
+                                <th>Nombre Rutina</th>
+                                <th>Objetivo</th>
+                                <th>Fecha</th>
+
                                 <th>Entrenador</th>
                                 <th>Fecha</th>
                                 <th>Detalles</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if(isset($citas) && !empty($citas)): ?>
-                                <?php foreach($citas as $cita): ?>
+                            <?php if(isset($rutinas_asignadas) && !empty($rutinas_asignadas)): ?>
+                                <?php foreach($rutinas_asignadas as $rutina): ?>
                                     <tr>
-                                        <td><?php echo $cita->nombre_rutina; ?></td>
-                                        <td><?php echo $cita->nombre_nivel; ?></td>
-                                        <td><?php echo $cita->nombre_entrenador; ?></td>
-                                        <td><?php echo $cita->fecha; ?></td>
-                                        <table class="table table-bordered mt-4">
-                        <thead>
-                            <tr>
-                                <th>Rutina</th>
-                                <th>Nivel</th>
-                                <th>Entrenador</th>
-                                <th>Fecha</th>
-                                <th>Detalles</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php if(isset($citas) && !empty($citas)): ?>
-                                <?php foreach($citas as $cita): ?>
-                                    <tr>
-                                        <td><?php echo $cita->nombre_rutina; ?></td>
-                                        <td><?php echo $cita->nivel; ?></td>
-                                        <td><?php echo $cita->nombre_entrenador; ?></td>
-                                        <td><?php echo $cita->fecha; ?></td>
-                                        <td>
-                                            <a href="#" class="btn btn-info btn-sm" 
-                                            onclick="verDetalleRutina(<?php echo $cita->id_rutina; ?>, <?php echo $cita->id_nivel; ?>)" 
-                                            data-bs-toggle="modal" data-bs-target="#modalDetalleRutina">
-                                                Detalles
-                                            </a>
-                                        </td>
+                                        <td><?php echo $rutina->grupo_muscular; ?></td>
+                                        <td><?php echo $rutina->objetivo; ?></td>
+                                        <td><?php echo $rutina->fecha_asignacion; ?></td>
+                                        <td><?php echo $rutina->nombre_entrenador; ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             <?php else: ?>
@@ -84,9 +62,14 @@
                                 <label for="rutina" class="form-label">Rutina</label>
                                 <select class="form-select" id="rutina" name="rutina" required>
                                     <option value="">Selecciona una rutina</option>
-                                    <?php foreach($rutinas as $rutina): ?>
-                                        <option value="<?php echo $rutina->id; ?>"><?php echo $rutina->nombre; ?></option>
-                                    <?php endforeach; ?>
+
+                                    <?php if(isset($todas_rutinas) && !empty($todas_rutinas)): ?>
+                                        <?php foreach($todas_rutinas as $rutina): ?>
+                                            <?php if(is_object($rutina)): ?>
+                                                <option value="<?php echo $rutina->id_rutina; ?>"><?php echo $rutina->grupo_muscular; ?></option>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
                                 </select>
                             </div>
                             <div class="col-md-3">
@@ -116,6 +99,7 @@
                     </form>
                 </div>
             </div>
+            <!-- Sección: Citas agendadas -->
         </div>
     <?php elseif($this->session->userdata('id_rol') == 2): ?>
         <div class="container">

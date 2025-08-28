@@ -20,7 +20,7 @@ public function autenticarUsuario() {
         if ($user) {
             if ($this->Autenticar_model->usuarioTieneRol($user->id_usuario, $id_rol)) {
                 $this->session->set_userdata([
-                    'id'=> $user->id_usuario,
+                    'id_usuario'=> $user->id_usuario,
                     'nombre' => $user->nombre,
                     'apellido' => $user->apellido,
                     'documento'  => $user->documento,

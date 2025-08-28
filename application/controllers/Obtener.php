@@ -33,6 +33,7 @@ class Obtener extends CI_Controller {
         $this->load->view('fijos/footer');
     }
 
+
     public function obtenerRutinaPorId(){
         $id_rutina = $this->uri->segment(3);
         $info_rutina ['info_rutina'] = $this->Obtener_rutinas->obtenerInfoRutinaPorId($id_rutina);
@@ -43,4 +44,18 @@ class Obtener extends CI_Controller {
 
     
 
+        // Dashboard del cliente: envía rutinas y entrenadores a la vista
+        public function dashboardCliente() {
+            $data = array();
+            // Rutinas asignadas al cliente
+            $data['rutinas_asignadas'] = $this->Obtener_rutinas->obtenerRutinas();
+            // Todas las rutinas para el select
+            $data['todas_rutinas'] = $this->Obtener_rutinas->obtenerTodasRutinas();
+            if (property_exists($this, 'Obtener_entrenadores')) {
+                $data['entrenadores'] = $this->Obtener_entrenadores->obtenerEntrenadores();
+            }
+            $this->load->view('dashboard', $data);
+        }
 }
+
+

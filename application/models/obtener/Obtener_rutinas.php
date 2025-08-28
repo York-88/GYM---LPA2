@@ -7,9 +7,15 @@ class Obtener_rutinas extends CI_Model {
 		parent::__construct();
 	}
 
+
 	public function obtenerRutinas() {
-        
-		$query = $this->db->get('rutinas');
+		$this->db->select('rutinas.*, asignacion_rutina.fecha_asignacion, usuarios.nombre AS nombre_entrenador');
+		$this->db->from('rutinas');
+		$this->db->join('asignacion_rutina', 'rutinas.id_rutina = asignacion_rutina.id_rutina', 'left');
+		$this->db->join('usuarios', 'asignacion_rutina.id_entrenador = usuarios.id_usuario', 'left');
+		 $this->db->join('detalle_usuario', 'usuarios.id_usuario = detalle_usuario.id_usuario', 'left');
+		$this->db->where('detalle_usuario.id_rol', 2);
+		$query = $this->db->get();
 		return $query->result();
 	}
 
