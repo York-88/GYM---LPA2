@@ -3,7 +3,6 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-
                     <th scope="col">Nombre</th>
                     <th scope="col">Objetivo</th>
                     <th scope="col"></th>

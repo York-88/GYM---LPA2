@@ -62,6 +62,32 @@ class Registrar extends CI_Controller {
 		}
 		
 	}
+	public function registrarRutina() {
+
+		if ($this->input->post()) {
+
+			$rutina = array(
+				'grupo_muscular' => $this->input->post('grupo_muscular'),
+				'objetivo' => $this->input->post('objetivo')
+			);
+
+			if ($this->RegistroModel->agregarRutina($rutina)) {
+				$this->session->set_flashdata('mensaje', 'Rutina registrada con éxito ✅');
+			} else {
+				$this->session->set_flashdata('mensaje', 'Error al registrar ❌');
+			}
+
+			redirect('Welcome/dashboard');
+
+		} else {
+			$this->load->view('fijos/head_login');
+			$this->load->view('rutinas/registrar_rutina');
+			$this->load->view('fijos/footer');
+		}
+		
+	}
+	public function registrarEjercicio() {
+
 
 
 

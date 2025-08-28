@@ -7,6 +7,7 @@ class Obtener extends CI_Controller {
         parent::__construct();
         $this->load->model('obtener/ObtenerRolesModel');
         $this->load->model('obtener/Obtener_ejercicios');
+        $this->load->model('obtener/Obtener_rutinas');
     }
 
 	public function obtenerRoles(){
