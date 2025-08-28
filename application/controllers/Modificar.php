@@ -77,6 +77,6 @@ class Modificar extends CI_Controller {
         $this->Modificar_modelo->eliminarEjercicio($id_ejercicio);
         $this->session->set_flashdata('mensaje', 'Ejercicio eliminado correctamente.');
         redirect('Obtener/obtenerEjercicios');
-    }
+    } 
 
 }

@@ -24,6 +24,8 @@ class Obtener extends CI_Controller {
         $this->load->view('fijos/footer');
 	}
 
+    
+    
     public function obtenerRutinas(){
         $rutinas['rutinas'] = $this->Obtener_rutinas->obtenerRutinas();
         $this->load->view('fijos/head_login');
@@ -31,6 +33,14 @@ class Obtener extends CI_Controller {
         $this->load->view('fijos/footer');
     }
 
+    public function obtenerRutinaPorId(){
+        $id_rutina = $this->uri->segment(3);
+        $info_rutina ['info_rutina'] = $this->Obtener_rutinas->obtenerInfoRutinaPorId($id_rutina);
+        $this->load->view('fijos/head_login');
+        $this->load->view('rutinas/rutina_detalle', $info_rutina);
+        $this->load->view('fijos/footer');
+    }
+
     
-	
+
 }

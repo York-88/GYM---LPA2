@@ -19,6 +19,16 @@ class Obtener_ejercicios extends CI_Model {
         return $query->row();
     }
 
+    public function obtenerInfoRutina($id_rutina){
+        $this->db->where('id_rutina', $id_rutina);
+        $query = $this->db->get('detalle_rutina');
+        return $query->row();
+    }
+    public function obtenerNiveles(){
+        $query = $this->db->get('niveles');
+        return $query->result();
+    }
+
 }
 
 ?>
