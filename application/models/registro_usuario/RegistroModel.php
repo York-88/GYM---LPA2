@@ -22,5 +22,10 @@ class RegistroModel extends CI_Model {
             return TRUE;
         }   
     }
+
+    function agregarRutina($rutina) {
+        $this->db->insert('rutinas', $rutina);
+        return $this->db->insert_id();
+    }
 }
 ?>

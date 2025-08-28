@@ -25,6 +25,6 @@
                     <?php endif; ?>
                 </tbody>
                 </table>
-                <a class="btn btn-primary" role="button" href="#">Agregar ejercicio</a>
+                <a class="btn btn-primary" role="button" href="<?php echo base_url('Registrar/registrarEjercicio'); ?> ">Agregar ejercicio</a>
                 <a class="btn btn-secondary" role="button" href="<?php echo base_url('welcome/dashboard'); ?>">Volver</a>
 </div>

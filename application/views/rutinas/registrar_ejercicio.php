@@ -17,7 +17,7 @@
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-8 col-xl-6">
                         <div class="container">
-                            <?php echo form_open('rutinas/registrarEjercicio'); ?>
+                            <?php echo form_open('Registrar/registrarEjercicio'); ?>
                                 <div class="mb-3">
                                     <label for="nombre_ejercicio" class="form-label">Nombre del ejercicio:</label>
                                     <input type="text" name="nombre_ejercicio" id="nombre_ejercicio" class="form-control" required>
