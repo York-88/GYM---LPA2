@@ -79,12 +79,12 @@
                 </div>
             </div>
         </div>
-    <?php elseif($this->session->userdata('id_rol') == 2): ?>
+    <?php elseif($this->session->userdata('id_rol') == 3): ?>
         <h1>HOLA, FELICIDADES!!!</h1>
     <?php elseif($this->session->userdata('id_rol') == 4): ?>
 
         <div class="container">
-            <h2>Lista de Empleados</h2>
+            <h2>Lista de Clientes</h2>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -93,28 +93,22 @@
                     <th scope="col">Apellido</th>
                     <th scope="col">Direccion</th>
                     <th scope="col">Telefono</th>
-                    <th scope="col">Salario</th>
-                    <th scope="col">Fecha de Ingreso</th>
-                    <th scope="col">Fecha de Finalización</th>
                     <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php if (isset($empleados) && !empty($empleados)): ?>
-                        <?php foreach ($empleados as $empleado): ?>
+                    <?php if (isset($clientes) && !empty($clientes)): ?>
+                        <?php foreach ($clientes as $clientes): ?>
                             <tr>
-                                <?php if ($empleado->estado == 1): ?>
-                                <td><?php echo $empleado->documento; ?></td>
-                                <td><?php echo $empleado->nombre; ?></td>
-                                <td><?php echo $empleado->apellido; ?></td>
-                                <td><?php echo $empleado->direccion; ?></td>
-                                <td><?php echo $empleado->telefono; ?></td>
-                                <td><?php echo $empleado->salario; ?></td>
-                                <td><?php echo $empleado->inicio_contrato; ?></td>
-                                <td><?php echo $empleado->fin_contrato; ?></td>
+                                <?php if ($clientes ->estado == 1): ?>
+                                <td><?php echo $clientes->documento; ?></td>
+                                <td><?php echo $clientes->nombre; ?></td>
+                                <td><?php echo $clientes->apellido; ?></td>
+                                <td><?php echo $clientes->direccion; ?></td>
+                                <td><?php echo $clientes->telefono; ?></td>
 
-                                <td><a class="pencil-icon" href="<?php echo base_url('Modificar/editar/'.$empleado->id_usuario); ?>">Editar</a></td>
-                                <td><a href="<?php echo base_url('Modificar/eliminarUsuario/'.$empleado->id_usuario); ?>" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">Eliminar</a></td>
+                                <td><a class="pencil-icon" href="<?php echo base_url('Modificar/editar/'.$clientes->id_usuario); ?>">Editar</a></td>
+                                <td><a href="<?php echo base_url('Modificar/eliminarUsuario/'.$clientes->id_usuario); ?>" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">Eliminar</a></td>
                                 <?php endif; ?>
                             </tr>
                         <?php endforeach; ?>
@@ -123,7 +117,7 @@
                     <?php endif; ?>
                 </tbody>
                 </table>
-                <a class="btn btn-primary" role="button" href="<?php echo base_url('Registrar/registrarUsuario/4');?>">Agregar Empleado</a>
+                <a class="btn btn-primary" role="button" href="<?php echo base_url('Registrar/registrarUsuario/3');?>">Agregar Cliente</a>
         </div>
         <div class="container mt-3" >
             <h2>Lista de Entrenadores</h2>
